@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\ADMIN;
+namespace App\Http\Controllers\admin;
 
-use App\Models\Pegawai;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\PengajuanCuti;
+use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-class PegawaiController extends Controller
+class PengajuanCutiController extends Controller
 {
     public function index(){
         // fitur pagination
@@ -16,16 +16,20 @@ class PegawaiController extends Controller
 
         // fitur pencarian
         if(request('search')) {
-            $pegawai = Pegawai::where('nama', 'like', '%'.request('search').'%')->paginate($max_view)->withQueryString();
+            $pegawai = PengajuanCuti::where('user_id', 'like', '%'.request('search').'%')->paginate($max_view)->withQueryString();
         }else {
-            $pegawai = Pegawai::orderBy('nama')->paginate($max_view);
+            $pegawai = PengajuanCuti::orderBy('user_id')->paginate($max_view);
         }
-        return view('pegawai.index', compact('pegawai',));
+
+        $userPegawai = PengajuanCuti::where('user_id', Auth::user()->id);
+        $user = User::all();        
+
+        return view('pegawai.pengajuanCuti.index', compact('pegawai', 'userPegawai', 'user'));
     }
 
-    public function create()
+    public function create()    
         {
-            return view('pegawai.create');
+            return view('pengajuanCuti.create');
         }
 
     /**
@@ -34,31 +38,27 @@ class PegawaiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
             'gender' => 'required',
             'tmp_lahir' => 'required',
             'tgl_lahir' => 'required',
             'telpon' => 'required',
             'alamat' => 'required',
             'divisi_id' => 'required',
-            ],
-        [
-            'nama.required' => 'nama Wajib Diisi',
-        ]);
+            'user_id' => 'required',
+            ]);
 
         $data = [
-            'nama' => $request->input('nama'),
             'gender' => $request->input('gender'),
             'tmp_lahir' => $request->input('tmp_lahir'),
             'tgl_lahir' => $request->input('tgl_lahir'),
             'telpon' => $request->input('telpon'),
             'alamat' => $request->input('alamat'),
             'divisi_id' => $request->input('divisi_id'),
-            
+            'user_id' => $request->input('divisi_id'),
         ];
 
-        Pegawai::create($data);
-        return redirect()->route('pegawai.create')->with('success', 'berhasil simpan data');
+        PengajuanCuti::create($data);
+        return redirect()->route('pengajuanCuti.create')->with('success', 'berhasil simpan data');
 
     }
 
@@ -75,8 +75,8 @@ class PegawaiController extends Controller
      */
     public function edit($id)
     {
-        $pegawai = Pegawai::findOrFail($id);
-        return view('pegawai.index', compact('pegawai'));
+        $pegawai = PengajuanCuti::findOrFail($id);
+        return view('pengajuanCuti.index', compact('pegawai'));
     }
 
     /**
@@ -85,39 +85,36 @@ class PegawaiController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => 'required',
             'gender' => 'required',
             'tmp_lahir' => 'required',
             'tgl_lahir' => 'required',
             'telpon' => 'required',
             'alamat' => 'required',
             'divisi_id' => 'required',
-            ],
-        [
-            'nama.required' => 'nama Wajib Diisi',
-        ]);
+            'user_id' => 'required',
+            ]);
 
         $data = [
-            'nama' => $request->input('nama'),
             'gender' => $request->input('gender'),
             'tmp_lahir' => $request->input('tmp_lahir'),
             'tgl_lahir' => $request->input('tgl_lahir'),
             'telpon' => $request->input('telpon'),
             'alamat' => $request->input('alamat'),
             'divisi_id' => $request->input('divisi_id'),
+            'user_id' => $request->input('divisi_id'),
         ];
 
-        $pegawai = Pegawai::findOrFail($id);
+        $pegawai = PengajuanCuti::findOrFail($id);
         $pegawai->update($data);
-        return redirect()->route('pegawai.edit', $pegawai->id)->with('success', 'Berhasil mengubah data!');
+        return redirect()->route('pengajuanCuti.edit', $pegawai->id)->with('success', 'Berhasil mengubah data!');
     }
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        $pegawai = Pegawai::findOrFail($id);
+        $pegawai = PengajuanCuti::findOrFail($id);
         $pegawai->delete();
-        return redirect('/pegawai')->with('success', 'Berhasil menghapus data!');
+        return redirect('/pegawai/pengajuanCuti')->with('success', 'Berhasil menghapus data!');
     }
 }

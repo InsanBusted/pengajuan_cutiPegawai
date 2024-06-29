@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pegawai', function (Blueprint $table) {
             $table->id();
-            $table->string('nip', length:20);
+            $table->string('nama', length:255);
             $table->char('gender', length:1);
             $table->string('tmp_lahir', length:45);
             $table->date('tgl_lahir');
@@ -29,7 +29,7 @@ return new class extends Migration
      * Reverse the migrations.
      */
     public function down(): void
-    {
+    {   
         Schema::dropIfExists('pegawai');
     }
 };

@@ -40,11 +40,23 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
         Route::put('/{id}', [ADMIN\PegawaiController::class, 'update'])->name('pegawai.update');
         Route::delete('/{id}', [ADMIN\PegawaiController::class, 'destroy'])->name('pegawai.delete');
     });
+    // Pengajuan Cuti
+    Route::prefix('/pegawai')->group(function() {
+        Route::get(
+            'pengajuanCuti/create',
+            [ADMIN\PengajuanCutiController::class, 'create']
+        )->name('pengajuanCuti.create');
+        Route::post('pengajuanCuti/update', [ADMIN\PengajuanCutiController::class, 'store'])->name('pengajuanCuti.tambah');
+        Route::get('pengajuanCuti/{id}/edit', [ADMIN\PengajuanCutiController::class, 'edit'])->name('pengajuanCuti.edit');
+        Route::put('pengajuanCuti/{id}', [ADMIN\PengajuanCutiController::class, 'update'])->name('pengajuanCuti.update');
+        Route::delete('pengajuanCuti/{id}', [ADMIN\PengajuanCutiController::class, 'destroy'])->name('pengajuanCuti.delete');
+    });
     
 });    
 
 Route::middleware(['auth', 'verified', 'role:pegawai|admin'])->group(function() {
     Route::get('/pegawai', [ADMIN\PegawaiController::class, 'index'])->name('pegawai');
+    Route::get('/pegawai/pengajuanCuti', [ADMIN\PengajuanCutiController::class, 'index'])->name('pengajuan-cuti');
 });
 
 
