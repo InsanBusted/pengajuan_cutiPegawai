@@ -26,5 +26,11 @@ class UserSeeder extends Seeder
             'password' => bcrypt('12345678')
         ]);
         $pegawai->assignRole('pegawai');
+        // $pegawai = User::create([
+        //     'name' => 'pegawai1',
+        //     'email' => 'pegawai1@gmail.com',
+        //     'password' => bcrypt('12345678')
+        // ]);
+        // $pegawai->assignRole('pegawai');
     }
 }
