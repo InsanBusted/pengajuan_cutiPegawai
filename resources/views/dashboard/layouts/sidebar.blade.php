@@ -13,7 +13,7 @@
             </div>
             @endauth
             @guest
-                <a href="" class="d-block">Guest</a>
+                <a href="" class="d-block">Guestrts</a>
             @endguest
       </div>
 
