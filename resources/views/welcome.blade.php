@@ -111,7 +111,7 @@
                 </div>
                 <div class="col-md-7">
                   <div class="img-box">
-                    <img src="images/slider-img.png" alt="">
+                    <img src="{{asset('home/images/slider-img.png')}}" alt="">
                   </div>
                 </div>
               </div>
