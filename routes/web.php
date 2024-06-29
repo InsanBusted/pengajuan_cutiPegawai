@@ -35,7 +35,7 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
             '/create',
             [ADMIN\PegawaiController::class, 'create']
         )->name('pegawai.create');
-        Route::post('/update', [ADMIN\PegawaiController::class, 'store'])->name('pegawai.tambah');
+        Route::post('/updateee', [ADMIN\PegawaiController::class, 'store'])->name('pegawai.tambah');
         Route::get('/{id}/edit', [ADMIN\PegawaiController::class, 'edit'])->name('pegawai.edit');
         Route::put('/{id}', [ADMIN\PegawaiController::class, 'update'])->name('pegawai.update');
         Route::delete('/{id}', [ADMIN\PegawaiController::class, 'destroy'])->name('pegawai.delete');
