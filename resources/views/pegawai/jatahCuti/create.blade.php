@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Tambah Divsi</h1>
+                        <h1>Tambah Jatah Cuti</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ url('admin') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Divsi</li>
+                            <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Home</a></li>
+                            <li class="breadcrumb-item active">Jatah Cuti</li>
                         </ol>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header d-flex justify-content-between">
-                                <a href="{{ route('divisi.index') }}" class="btn btn-success btn-sm">Kembali</a>
+                                <a href="{{ route('jatahCuti.index') }}" class="btn btn-success btn-sm">Kembali</a>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -45,20 +45,28 @@
                                     </ul>
                                 </div>
                                 @endif
-                                <form action="{{ route('divisi.store') }}" method="post">
+                                <form action="{{ route('jatahCuti.store') }}" method="post">
                                     @csrf
+                                   
                                     <div class="form-group row">
-                                        <label for="kode" class="col-md-4">kode</label>
-                                        <input type="text" name="kode" value="{{ old('kode') }}" id="kode" class="form-control col-md-8">
+                                        <label for="tahun" class="col-md-4">Tahun</label>
+                                        <input type="number" name="tahun" value="{{ old('tahun') }}" id="tahun" class="form-control col-md-8">
                                     </div>
                                     <div class="form-group row">
-                                        <label for="nama" class="col-md-4">Nama Divisi</label>
-                                        <input type="text" name="nama" value="{{ old('nama') }}" id="nama" class="form-control col-md-8">
+                                        <label for="jumlah" class="col-md-4">Jumlah</label>
+                                        <input type="number" name="jumlah" value="{{ old('jumlah') }}" id="jumlah" class="form-control col-md-8">
                                     </div>
                                     <div class="form-group row">
-                                        <label for="manager" class="col-md-4">Nama Manager</label>
-                                        <input type="text" name="manager" value="{{ old('manager') }}" id="manager" class="form-control col-md-8">
+                                        <label for="nip" class="col-md-4">NIP</label>
+                                        <select class="form-control select-dropdown col-md-8" name="nip">
+                                            @foreach ($pegawai as $pegawai)
+                                            <option value="" hidden>NIP</option>
+                                            <option value="{{ $pegawai->id }}" required>{{ $pegawai->nip }}</option>
+                                            @endforeach
+                                          </select>
                                     </div>
+                                    
+                                   
                                     <div class="d-flex justify-content-center">
                                         <input type="submit" value="Tambah" class="btn btn-primary">
                                     </div>

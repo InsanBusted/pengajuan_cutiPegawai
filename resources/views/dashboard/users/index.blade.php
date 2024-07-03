@@ -1,4 +1,4 @@
-@extends('admin.layout.app')
+@extends('dashboard.layouts.app')
 
 @section('content') 
     <div class="content-wrapper">
@@ -52,14 +52,13 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->email }}</td>
-                                                <td class="d-flex">
-                                                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">edit</a>
-                                                    <form method="POST" action="{{ route('users.delete', $user->id) }}" >
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button onclick="if(!confirm('Yakin dihapus nih?')) {return false}" type="submit" class="btn btn-danger btn-sm">hapus</button>
+                                                <td class="d-flex"><a type="button" href="{{ route('users.edit', $user->id) }}" class="btn btn-primary mr-4">Edit</a>
+                                                    <form action="{{ route('users.delete', $user->id) }}" method="post" onsubmit="return confirm('yakin ingin dihapus?')">
+                                                       @csrf
+                                                       @method('delete')
+                                                       <button type="submit" class="btn btn-danger">Delete</button>
                                                     </form>
-                                                </td>
+                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -72,6 +71,7 @@
                                         </tr>
                                     </tfoot>
                                 </table>
+                                {{ $users->onEachSide(3)->links() }}
                             </div>
                             <!-- /.card-body -->
                         </div>

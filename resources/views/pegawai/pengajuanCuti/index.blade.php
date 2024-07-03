@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Pengajuan Cuti Pegawai</h1>
+                        <h1>Pengajuan Cuti</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('pegawai') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Pengajuan Cuti</li>
+                            <li class="breadcrumb-item active">Pengajuan Cui</li>
                         </ol>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Data Pengajuan Cuti Pegawai</h3>
+                                <h3 class="card-title">Data Pengajuan</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -41,28 +41,27 @@
                                     <thead>
                                         <tr>
                                             <th>NO</th>
-                                            <th>NO</th>
-                                            <th>Nama</th>
-                                            <th>Gender</th>
-                                            <th>Tempat Lahir</th>
-                                            <th>Tanggal Lahir</th>
-                                            <th>No Telpon</th>
-                                            <th>Alamat</th>
+                                            <th>Tanggal Awal</th>
+                                            <th>Tanggal Akhir</th>
+                                            <th>Jumlah</th>
+                                            <th>Keterangan</th>
+                                            <th>Status</th>
+                                            <th>NIP</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($pegawai as $user)
+                                        @foreach ($pengajuanCuti as $pengajuan)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $user->user->name ?? 'none' }}</td>
-                                                <td>{{ $user->tanggal_awal }}</td>
-                                                <td>{{ $user->tanggal_akhir }}</td>
-                                                <td>{{ $user->jumlah }}</td>
-                                                <td>{{ $user->ket }}</td>
-                                                <td>{{ $user->status }}</td>
-                                                <a type="button" href="{{ route('pengajuanCuti.edit', $user->id) }}" class="btn btn-primary mr-4">Edit</a>
-                                                    <form action="{{ route('pengajuanCuti.delete', $user->id) }}" method="post" onsubmit="return confirm('yakin ingin dihapus?')">
+                                                <td>{{ $pengajuan->tanggal_awal }}</td>
+                                                <td>{{ $pengajuan->tanggal_akhir }}</td>
+                                                <td>{{ $pengajuan->jumlah }}</td>
+                                                <td>{{ $pengajuan->ket }}</td>
+                                                <td>{{ $pengajuan->status }}</td>
+                                                <td>{{ $pengajuan->pegawai->nip }}</td>
+                                                <td class="d-flex"><a type="button" href="{{ route('pengajuanCuti.edit', $pengajuan->id) }}" class="btn btn-primary mr-4">Edit</a>
+                                                    <form action="{{ route('pengajuanCuti.delete', $pengajuan->id) }}" method="post" onsubmit="return confirm('yakin ingin dihapus?')">
                                                        @csrf
                                                        @method('delete')
                                                        <button type="submit" class="btn btn-danger">Delete</button>
@@ -74,16 +73,17 @@
                                     <tfoot>
                                         <tr>
                                             <th>NO</th>
-                                            <th>Nama</th>
-                                            <th>Gender</th>
-                                            <th>Tempat Lahir</th>
-                                            <th>Tanggal Lahir</th>
-                                            <th>No Telpon</th>
-                                            <th>Alamat</th>
+                                            <th>Tanggal Awal</th>
+                                            <th>Tanggal Akhir</th>
+                                            <th>Jumlah</th>
+                                            <th>Keterangan</th>
+                                            <th>Status</th>
+                                            <th>NIP</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </tfoot>
                                 </table>
+                                {{ $pengajuanCuti->onEachSide(3)->links() }}
                             </div>
                             <!-- /.card-body -->
                         </div>

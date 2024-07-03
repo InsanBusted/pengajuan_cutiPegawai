@@ -1,19 +1,19 @@
 @extends('dashboard.layouts.app')
 
 @section('content')
-    <div class="content-wrapper">
+<div class="content-wrapper">
 
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Tambah Divsi</h1>
+                        <h1>Edit Jatah Cuti</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ url('admin') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Divsi</li>
+                            <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Home</a></li>
+                            <li class="breadcrumb-item active">Jatah Cuti</li>
                         </ol>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header d-flex justify-content-between">
-                                <a href="{{ route('divisi.index') }}" class="btn btn-success btn-sm">Kembali</a>
+                                <a href="{{ route('jatahCuti.index') }}" class="btn btn-success btn-sm">Kembali</a>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -45,23 +45,29 @@
                                     </ul>
                                 </div>
                                 @endif
-                                <form action="{{ route('divisi.store') }}" method="post">
+                                <form action="{{ route('jatahCuti.update', $jatahCuti->id) }}" method="post">
                                     @csrf
-                                    <div class="form-group row">
-                                        <label for="kode" class="col-md-4">kode</label>
-                                        <input type="text" name="kode" value="{{ old('kode') }}" id="kode" class="form-control col-md-8">
+                                    @method('put')
+                                    <h1>Edit Data Jatah Cuti</h1>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput1">jumlah</label>
+                                        <input type="text" name="jumlah" class="form-control" id="exampleFormControlInput1" placeholder="jumlah" required value="{{ old('jumlah', $jatahCuti->jumlah) }}">
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="nama" class="col-md-4">Nama Divisi</label>
-                                        <input type="text" name="nama" value="{{ old('nama') }}" id="nama" class="form-control col-md-8">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput1">tahun</label>
+                                        <input type="text" name="tahun" class="form-control" id="exampleFormControlInput1" placeholder="tahun" required value="{{ old('tahun', $jatahCuti->tahun) }}">
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="manager" class="col-md-4">Nama Manager</label>
-                                        <input type="text" name="manager" value="{{ old('manager') }}" id="manager" class="form-control col-md-8">
+                                    <div class="form-group">
+                                        <label for="nip" >NIP</label>
+                                        <select class="form-control select-dropdown" name="nip">
+                                            @foreach ($pegawai as $pegawai)
+                                            <option value="" hidden>NIP</option>
+                                            <option value="{{ $pegawai->id }}" {{ $pegawai->id == $jatahCuti->nip ? 'selected' : '' }} required>{{ $pegawai->nip }}</option>
+                                            @endforeach
+                                          </select>
                                     </div>
-                                    <div class="d-flex justify-content-center">
-                                        <input type="submit" value="Tambah" class="btn btn-primary">
-                                    </div>
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <a type="button" href="{{ route('jatahCuti.index') }}" class="btn btn-info">Kembali</a>
                                 </form>
                             </div>
                             <!-- /.card-body -->

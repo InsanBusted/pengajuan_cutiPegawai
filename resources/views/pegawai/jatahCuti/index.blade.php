@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Genre</h1>
+                        <h1>Jatah Cuti</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ url('admin') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Genre</li>
+                            <li class="breadcrumb-item"><a href="{{ url('pegawai') }}">Home</a></li>
+                            <li class="breadcrumb-item active">Jatah Cuti</li>
                         </ol>
                     </div>
                 </div>
@@ -27,11 +27,11 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Data Table</h3>
+                                <h3 class="card-title">Data Jatah Cuti</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <a href="{{ route('genres.create') }}" class="btn btn-primary btn-sm">Tambah</a>
+                                <a href="{{ route('jatahCuti.create') }}" class="btn btn-primary btn-sm">Tambah</a>
                                 @if (session('success'))
                                 <div class="alert alert-success">
                                     {{ session('success') }}
@@ -41,34 +41,40 @@
                                     <thead>
                                         <tr>
                                             <th>NO</th>
-                                            <th>Nama</th>
+                                            <th>Tahun</th>
+                                            <th>Jumlah</th>
+                                            <th>NIP</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($genres as $genre)
+                                        @foreach ($jatahCuti as $cuti)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $genre->name }}</td>
-                                                <td class="d-flex">
-                                                    <a href="{{ route('genres.edit', $genre->id) }}" class="btn btn-warning btn-sm">edit</a>
-                                                    <form method="POST" action="{{ route('genres.delete', $genre->id) }}" >
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button onclick="if(!confirm('Yakin dihapus nih?')) {return false}" type="submit" class="btn btn-danger btn-sm">hapus</button>
+                                                <td>{{ $cuti->tahun }}</td>
+                                                <td>{{ $cuti->jumlah }}</td>
+                                                <td>{{ $cuti->pegawai->nip }}</td>
+                                                <td class="d-flex"><a type="button" href="{{ route('jatahCuti.edit', $cuti->id) }}" class="btn btn-primary mr-4">Edit</a>
+                                                    <form action="{{ route('jatahCuti.delete', $cuti->id) }}" method="post" onsubmit="return confirm('yakin ingin dihapus?')">
+                                                       @csrf
+                                                       @method('delete')
+                                                       <button type="submit" class="btn btn-danger">Delete</button>
                                                     </form>
-                                                </td>
+                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <th>NO</th>
-                                            <th>Nama</th>
+                                            <th>Tahun</th>
+                                            <th>Jumlah</th>
+                                            <th>NIP</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </tfoot>
                                 </table>
+                                {{ $jatahCuti->onEachSide(3)->links() }}
                             </div>
                             <!-- /.card-body -->
                         </div>

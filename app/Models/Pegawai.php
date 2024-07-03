@@ -11,10 +11,17 @@ class Pegawai extends Model
     use HasFactory, HasRoles;
 
     protected $table = 'pegawai';
-    protected $fillable = ['nama', 'gender', 'tmp_lahir', 'tgl_lahir', 'telpon', 'alamat', 'divisi_id'];
+    protected $fillable = ['nip', 'gender', 'tmp_lahir', 'tgl_lahir', 'telpon', 'alamat', 'divisi_id'];
 
     public function divisi(){
         return $this->belongsTo(Divisi::class);
+    }
+
+    public function pengajuanCuti(){
+        return $this->hasOne(PengajuanCuti::class);
+    }
+    public function jatahCuti(){
+        return $this->hasOne(jatahCuti::class);
     }
 
    
