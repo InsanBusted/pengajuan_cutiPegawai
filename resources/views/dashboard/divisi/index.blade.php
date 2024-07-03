@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Jabatan</h1>
+                        <h1>Divisi</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -27,7 +27,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Data Table</h3>
+                                <h3 class="card-title">Data Divisi</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -37,6 +37,7 @@
                                     {{ session('success') }}
                                 </div>
                                 @endif
+                                
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
@@ -48,14 +49,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($divisi as $divisi)
+                                        @foreach ($divisi as $divisi1)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $divisi->kode }}</td>
-                                                <td>{{ $divisi->nama }}</td>
-                                                <td>{{ $divisi->manager }}</td>
-                                                <td class="d-flex"><a type="button" href="{{ route('divisi.edit', $divisi->id) }}" class="btn btn-primary mr-4">Edit</a>
-                                                    <form action="{{ route('divisi.delete', $divisi->id) }}" method="post" onsubmit="return confirm('yakin ingin dihapus?')">
+                                                <td>{{ $divisi1->kode }}</td>
+                                                <td>{{ $divisi1->nama }}</td>
+                                                <td>{{ $divisi1->manager }}</td>
+                                                <td class="d-flex"><a type="button" href="{{ route('divisi.edit', $divisi1->id) }}" class="btn btn-primary mr-4">Edit</a>
+                                                    <form action="{{ route('divisi.delete', $divisi1->id) }}" method="post" onsubmit="return confirm('yakin ingin dihapus?')">
                                                        @csrf
                                                        @method('delete')
                                                        <button type="submit" class="btn btn-danger">Delete</button>
@@ -74,6 +75,7 @@
                                         </tr>
                                     </tfoot>
                                 </table>
+                                {{ $divisi->links() }}
                             </div>
                             <!-- /.card-body -->
                         </div>

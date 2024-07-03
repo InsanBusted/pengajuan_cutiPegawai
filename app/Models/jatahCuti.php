@@ -6,15 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Permission\Traits\HasRoles;
 
-class PengajuanCuti extends Model
+class jatahCuti extends Model
 {
     use HasFactory, HasRoles;
 
-    protected $table = 'pengajuan_cuti';
-    protected $fillable = ['tanggal_awal', 'tanggal_akhir', 'jumlah', 'status', 'ket', 'nip'];
+    protected $table = 'jatah_cuti';
 
+    protected $fillable = ['tahun', 'jumlah', 'nip'];
     public function pegawai(){
         return $this->belongsTo(Pegawai::class, 'nip');
     }
-
 }

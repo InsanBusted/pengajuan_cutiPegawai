@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pengajuan_cuti', function (Blueprint $table) {
+        Schema::create('jatah_cuti', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal_awal');
-            $table->date('tanggal_akhir');
+            $table->integer('tahun');
             $table->integer('jumlah');
-            $table->string('ket', length:45);
-            $table->char('status');
             $table->unsignedBigInteger('nip');
             $table->foreign('nip')->references('id')->on('pegawai');
             $table->timestamps();
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pengajuan_cuti');
+        Schema::dropIfExists('jatah_cuti');
     }
 };

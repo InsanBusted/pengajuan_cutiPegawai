@@ -5,8 +5,7 @@ namespace App\Http\Controllers\ADMIN;
 use App\Models\Pegawai;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\PengajuanCuti;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Divisi;
 
 class PegawaiController extends Controller
 {
@@ -16,16 +15,18 @@ class PegawaiController extends Controller
 
         // fitur pencarian
         if(request('search')) {
-            $pegawai = Pegawai::where('nama', 'like', '%'.request('search').'%')->paginate($max_view)->withQueryString();
+            $pegawai = Pegawai::where('nip', 'like', '%'.request('search').'%')->paginate($max_view)->withQueryString();
         }else {
-            $pegawai = Pegawai::orderBy('nama')->paginate($max_view);
+            $pegawai = Pegawai::orderBy('nip')->paginate($max_view);
         }
-        return view('pegawai.index', compact('pegawai',));
+
+        return view('pegawai.index', compact('pegawai'));
     }
 
-    public function create()
+    public function create()    
         {
-            return view('pegawai.create');
+            $divisi = Divisi::all();
+            return view('pegawai.create', compact('divisi'));
         }
 
     /**
@@ -34,27 +35,23 @@ class PegawaiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
+            'nip' => 'required',
             'gender' => 'required',
             'tmp_lahir' => 'required',
             'tgl_lahir' => 'required',
             'telpon' => 'required',
             'alamat' => 'required',
             'divisi_id' => 'required',
-            ],
-        [
-            'nama.required' => 'nama Wajib Diisi',
-        ]);
+            ]);
 
         $data = [
-            'nama' => $request->input('nama'),
+            'nip' => $request->input('nip'),
             'gender' => $request->input('gender'),
             'tmp_lahir' => $request->input('tmp_lahir'),
             'tgl_lahir' => $request->input('tgl_lahir'),
             'telpon' => $request->input('telpon'),
             'alamat' => $request->input('alamat'),
             'divisi_id' => $request->input('divisi_id'),
-            
         ];
 
         Pegawai::create($data);
@@ -76,7 +73,8 @@ class PegawaiController extends Controller
     public function edit($id)
     {
         $pegawai = Pegawai::findOrFail($id);
-        return view('pegawai.index', compact('pegawai'));
+        $divisi = Divisi::all();
+        return view('pegawai.edit', compact('pegawai', 'divisi'));
     }
 
     /**
@@ -85,20 +83,17 @@ class PegawaiController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => 'required',
+            'nip' => 'required',
             'gender' => 'required',
             'tmp_lahir' => 'required',
             'tgl_lahir' => 'required',
             'telpon' => 'required',
             'alamat' => 'required',
             'divisi_id' => 'required',
-            ],
-        [
-            'nama.required' => 'nama Wajib Diisi',
-        ]);
+            ]);
 
         $data = [
-            'nama' => $request->input('nama'),
+            'nip' => $request->input('nip'),
             'gender' => $request->input('gender'),
             'tmp_lahir' => $request->input('tmp_lahir'),
             'tgl_lahir' => $request->input('tgl_lahir'),

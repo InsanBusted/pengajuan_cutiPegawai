@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Models\PengajuanCuti;
 use App\Http\Controllers\Controller;
+use App\Models\Pegawai;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,20 +17,18 @@ class PengajuanCutiController extends Controller
 
         // fitur pencarian
         if(request('search')) {
-            $pegawai = PengajuanCuti::where('user_id', 'like', '%'.request('search').'%')->paginate($max_view)->withQueryString();
+            $pengajuanCuti = PengajuanCuti::where('nip', 'like', '%'.request('search').'%')->paginate($max_view)->withQueryString();
         }else {
-            $pegawai = PengajuanCuti::orderBy('user_id')->paginate($max_view);
+            $pengajuanCuti = PengajuanCuti::orderBy('nip')->paginate($max_view);
         }
 
-        $userPegawai = PengajuanCuti::where('user_id', Auth::user()->id);
-        $user = User::all();        
-
-        return view('pegawai.pengajuanCuti.index', compact('pegawai', 'userPegawai', 'user'));
+        return view('pegawai.pengajuanCuti.index', compact('pengajuanCuti'));
     }
 
     public function create()    
         {
-            return view('pengajuanCuti.create');
+            $pegawai = Pegawai::all();
+            return view('pegawai.pengajuanCuti.create', compact('pegawai'));
         }
 
     /**
@@ -38,23 +37,21 @@ class PengajuanCutiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'gender' => 'required',
-            'tmp_lahir' => 'required',
-            'tgl_lahir' => 'required',
-            'telpon' => 'required',
-            'alamat' => 'required',
-            'divisi_id' => 'required',
-            'user_id' => 'required',
+            'tanggal_awal' => 'required',
+            'tanggal_akhir' => 'required',
+            'jumlah' => 'required',
+            'ket' => 'required',
+            'status' => 'required',
+            'nip' => 'required',
             ]);
 
         $data = [
-            'gender' => $request->input('gender'),
-            'tmp_lahir' => $request->input('tmp_lahir'),
-            'tgl_lahir' => $request->input('tgl_lahir'),
-            'telpon' => $request->input('telpon'),
-            'alamat' => $request->input('alamat'),
-            'divisi_id' => $request->input('divisi_id'),
-            'user_id' => $request->input('divisi_id'),
+            'tanggal_awal' => $request->input('tanggal_awal'),
+            'tanggal_akhir' => $request->input('tanggal_akhir'),
+            'jumlah' => $request->input('jumlah'),
+            'ket' => $request->input('ket'),
+            'status' => $request->input('status'),
+            'nip' => $request->input('nip'),
         ];
 
         PengajuanCuti::create($data);
@@ -75,8 +72,9 @@ class PengajuanCutiController extends Controller
      */
     public function edit($id)
     {
-        $pegawai = PengajuanCuti::findOrFail($id);
-        return view('pengajuanCuti.index', compact('pegawai'));
+        $pengajuanCuti = PengajuanCuti::findOrFail($id);
+        $pegawai = Pegawai::all();
+        return view('pegawai.pengajuanCuti.edit', compact('pengajuanCuti', 'pegawai'));
     }
 
     /**
@@ -85,36 +83,34 @@ class PengajuanCutiController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'gender' => 'required',
-            'tmp_lahir' => 'required',
-            'tgl_lahir' => 'required',
-            'telpon' => 'required',
-            'alamat' => 'required',
-            'divisi_id' => 'required',
-            'user_id' => 'required',
+            'tanggal_awal' => 'required',
+            'tanggal_akhir' => 'required',
+            'jumlah' => 'required',
+            'ket' => 'required',
+            'status' => 'required',
+            'nip' => 'required',
             ]);
 
         $data = [
-            'gender' => $request->input('gender'),
-            'tmp_lahir' => $request->input('tmp_lahir'),
-            'tgl_lahir' => $request->input('tgl_lahir'),
-            'telpon' => $request->input('telpon'),
-            'alamat' => $request->input('alamat'),
-            'divisi_id' => $request->input('divisi_id'),
-            'user_id' => $request->input('divisi_id'),
+            'tanggal_awal' => $request->input('tanggal_awal'),
+            'tanggal_akhir' => $request->input('tanggal_akhir'),
+            'jumlah' => $request->input('jumlah'),
+            'ket' => $request->input('ket'),
+            'status' => $request->input('status'),
+            'nip' => $request->input('nip'),
         ];
 
-        $pegawai = PengajuanCuti::findOrFail($id);
-        $pegawai->update($data);
-        return redirect()->route('pengajuanCuti.edit', $pegawai->id)->with('success', 'Berhasil mengubah data!');
+        $pengajuanCuti = PengajuanCuti::findOrFail($id);
+        $pengajuanCuti->update($data);
+        return redirect()->route('pengajuanCuti.edit', $pengajuanCuti->id)->with('success', 'Berhasil mengubah data!');
     }
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        $pegawai = PengajuanCuti::findOrFail($id);
-        $pegawai->delete();
-        return redirect('/pegawai/pengajuanCuti')->with('success', 'Berhasil menghapus data!');
+        $pengajuanCuti = PengajuanCuti::findOrFail($id);
+        $pengajuanCuti->delete();
+        return redirect('/pegawai/PengajuanCuti')->with('success', 'Berhasil menghapus data!');
     }
 }

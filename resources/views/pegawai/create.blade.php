@@ -39,35 +39,53 @@
                             </div>
                             @endif
                             <!-- form input -->
-                            <form action="{{ route('pegawai.tambah') }}" method="post">
+                            <form action="{{ route('pegawai.store') }}" method="post">
                                 @csrf
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Nip</label>
-                                    <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="Nama Member" required value="{{ old('nip') }}">
+                                    <input type="text" name="nip" class="form-control" id="exampleFormControlInput1" placeholder="Nomor Induk Pekerja" required value="{{ old('nip') }}">
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">Nama Genre</label>
-                                    <input type="text" name="email" class="form-control" id="exampleFormControlInput1" placeholder="email Member" required value="{{ old('email') }}">
-                                </div>
+                               
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Gender</label>
                                     <div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="gender" id="status_aktif" value="L">
-                                            <label class="form-check-label" for="status_aktif">Aktif</label>
+                                            <input class="form-check-input" type="radio" name="gender" id="laki-laki" value="L">
+                                            <label class="form-check-label" for="laki-laki">Laki-Laki</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="gender" id="status_tidak_aktif" value="P">
-                                            <label class="form-check-label" for="status_tidak_aktif">Tidak Aktif</label>
+                                            <input class="form-check-input" type="radio" name="gender" id="perempuan" value="P">
+                                            <label class="form-check-label" for="perempuan">Perempuan</label>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1">Tempat Lahir</label>
+                                    <input type="text" name="tmp_lahir" class="form-control" id="exampleFormControlInput1" placeholder="Tempat Lahir" required value="{{ old('tmp_lahir') }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1">Tanggal Lahir</label>
+                                    <input type="date" name="tgl_lahir" class="form-control" id="exampleFormControlInput1" placeholder="alamat Member" required value="{{ old('tgl_lahir') }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1">No Telepon</label>
+                                    <input type="text" name="telpon" class="form-control" id="exampleFormControlInput1" placeholder="No Telepon Aktif" required value="{{ old('telpon') }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Alamat</label>
                                     <input type="text" name="alamat" class="form-control" id="exampleFormControlInput1" placeholder="alamat Member" required value="{{ old('alamat') }}">
                                 </div>
+                                <div class="form-group">
+                                    <label for="nip" class="">Divisi</label>
+                                    <select class="form-control select-dropdown" name="divisi_id">
+                                        <option value="" hidden>--- Pilih Divisi ---</option>
+                                        @foreach ($divisi as $divisi)
+                                        <option value="{{ $divisi->id }}" required>{{ $divisi->nama }}</option>
+                                        @endforeach
+                                      </select>
+                                </div>
                                 <button type="submit" class="btn btn-primary">Tambah</button>
-                                <a type="button" href="{{ url('/admin/member') }}" class="btn btn-info">Kembali</a>
+                                <a type="button" href="{{ url('/pegawai') }}" class="btn btn-info">Kembali</a>
                             </form>
                         </div>
                     </div>

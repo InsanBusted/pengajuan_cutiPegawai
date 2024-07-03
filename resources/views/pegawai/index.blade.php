@@ -41,30 +41,29 @@
                                     <thead>
                                         <tr>
                                             <th>NO</th>
-                                            <th>NO</th>
-                                            <th>Nama</th>
+                                            <th>NIP</th>
                                             <th>Gender</th>
                                             <th>Tempat Lahir</th>
                                             <th>Tanggal Lahir</th>
                                             <th>No Telpon</th>
                                             <th>Alamat</th>
+                                            <th>Divisi</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($pegawai as $pegawai)
+                                        @foreach ($pegawai as $pegawai1)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $pegawai->kode }}</td>
-                                                <td>{{ $pegawai->nama }}</td>
-                                                <td>{{ $pegawai->divisi->nama }}</td>
-                                                <td>{{ $pegawai->manager }}</td>
-                                                <td>{{ $pegawai->manager }}</td>
-                                                <td>{{ $pegawai->manager }}</td>
-                                                <td>{{ $pegawai->manager }}</td>
-                                                <td>{{ $pegawai->manager }}</td>
-                                                <td class="d-flex"><a type="button" href="{{ route('pegawai.edit', $pegawai->id) }}" class="btn btn-primary mr-4">Edit</a>
-                                                    <form action="{{ route('pegawai.delete', $pegawai->id) }}" method="post" onsubmit="return confirm('yakin ingin dihapus?')">
+                                                <td>{{ $pegawai1->nip }}</td>
+                                                <td>{{ $pegawai1->gender == 'L' ? 'Laki-Laki' : 'Perempuan' }}</td>
+                                                <td>{{ $pegawai1->tmp_lahir }}</td>
+                                                <td>{{ $pegawai1->tgl_lahir }}</td>
+                                                <td>{{ $pegawai1->telpon }}</td>
+                                                <td>{{ $pegawai1->alamat }}</td>
+                                                <td>{{ $pegawai1->divisi->nama }}</td>
+                                                <td class="d-flex"><a type="button" href="{{ route('pegawai.edit', $pegawai1->id) }}" class="btn btn-primary mr-4">Edit</a>
+                                                    <form action="{{ route('pegawai.delete', $pegawai1->id) }}" method="post" onsubmit="return confirm('yakin ingin dihapus?')">
                                                        @csrf
                                                        @method('delete')
                                                        <button type="submit" class="btn btn-danger">Delete</button>
@@ -82,10 +81,12 @@
                                             <th>Tanggal Lahir</th>
                                             <th>No Telpon</th>
                                             <th>Alamat</th>
+                                            <th>Divisi</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </tfoot>
                                 </table>
+                                {{ $pegawai->onEachSide(3)->links() }}
                             </div>
                             <!-- /.card-body -->
                         </div>

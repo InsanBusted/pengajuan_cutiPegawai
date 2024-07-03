@@ -24,7 +24,7 @@ class DivisiController extends Controller
 
     public function create()
         {
-            return view('dashboard.divisi.index');
+            return view('dashboard.divisi.create');
         }
 
     /**
@@ -34,20 +34,24 @@ class DivisiController extends Controller
     {
         $request->validate([
             'nama' => 'required|min:3|max:50',
+            'kode' => 'required',
+            'manager' => 'required|min:3|max:50',
 
         ],
         [
-            'nama.required' => 'Nama Jabatan Wajib Diisi',
-            'nama.min' => 'Nama Jabatan Minimal 3 Karakter',
+            'nama.required' => 'Nama Divisi Wajib Diisi',
+            'nama.min' => 'Nama Divisi Minimal 3 Karakter',
             'nama.max' => 'Nama Jabtan Maximal 50 Karakter',
         ]);
 
         $data = [
-            'nama' => $request->input('nama')
+            'kode' => $request->input('kode'),
+            'nama' => $request->input('nama'),
+            'manager' => $request->input('manager'),
         ];
 
         Divisi::create($data);
-        return redirect()->route('position.create')->with('success', 'berhasil simpan data');
+        return redirect()->route('divisi.create')->with('success', 'berhasil simpan data');
 
     }
 
@@ -65,7 +69,7 @@ class DivisiController extends Controller
     public function edit($id)
     {
         $divisi = Divisi::findOrFail($id);
-        return view('dashboard.divisi.index', compact('divisi'));
+        return view('dashboard.divisi.edit', compact('divisi'));
     }
 
     /**
@@ -75,14 +79,20 @@ class DivisiController extends Controller
     {
         $request->validate([
             'nama' => 'required|min:3|max:50',
-        ], [
-            'nama.required' => 'Nama Jabatan Wajib Diisi',
-            'nama.min' => 'Nama Jabatan Minimal 3 Karakter',
-            'nama.max' => 'Nama Jabatan Maximal 50 Karakter',
+            'kode' => 'required',
+            'manager' => 'required|min:3|max:50',
+
+        ],
+        [
+            'nama.required' => 'Nama Divisi Wajib Diisi',
+            'nama.min' => 'Nama Divisi Minimal 3 Karakter',
+            'nama.max' => 'Nama Jabtan Maximal 50 Karakter',
         ]);
 
         $data = [
-            'nama' => $request->input('nama')
+            'kode' => $request->input('kode'),
+            'nama' => $request->input('nama'),
+            'manager' => $request->input('manager'),
         ];
 
         $divisi = Divisi::findOrFail($id);

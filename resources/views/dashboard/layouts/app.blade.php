@@ -33,6 +33,9 @@
     <!-- summernote -->
     <link rel="stylesheet"
         href="{{ asset('assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+    {{-- Select2 --}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    
     @stack('style')
 </head>
 
@@ -103,6 +106,11 @@
     <script src="{{ asset('assets/js/adminlte.js') }}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('assets/js/adminlte.js') }}"></script>
+    {{-- custom --}}
+    <script src="{{ asset('js/custom.js') }}"></script>
+    {{-- Select2 --}}
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     @stack('script')
 </body>
 
