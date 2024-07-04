@@ -67,7 +67,7 @@
                                         <label for="status" class="col-md-4">Status</label>
                                         <input type="text" name="status" value="{{ old('status') }}" id="status" class="form-control col-md-8">
                                     </div>
-                                    <div class="form-group row">
+                                    {{-- <div class="form-group row">
                                         <label for="nip" class="col-md-4">NIP</label>
                                         <select class="form-control select-dropdown col-md-8" name="nip">
                                             @foreach ($pegawai as $pegawai)
@@ -75,7 +75,7 @@
                                             <option value="{{ $pegawai->id }}" required>{{ $pegawai->nip }}</option>
                                             @endforeach
                                           </select>
-                                    </div>
+                                    </div> --}}
                                     
                                    
                                     <div class="d-flex justify-content-center">

@@ -1,4 +1,4 @@
-@extends('dashboard.layout.app')
+@extends('dashboard.layouts.app')
 
 @section('content')
     <div class="content-wrapper">
@@ -27,20 +27,25 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header d-flex justify-content-between">
-                                <a href="{{ route('users.index') }}" class="btn btn-success btn-sm">Kembali</a>
+                                <a href="{{ route('user.index') }}" class="btn btn-success btn-sm">Kembali</a>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                @if (count($errors) > 0)
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
+                                @if (session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
                                 @endif
-                                <form action="{{ route('users.store') }}" method="post">
+                                @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error )
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                @endif
+                                <form action="{{ route('user.store') }}" method="post">
                                     @csrf
                                     <div class="form-group row">
                                         <label for="nama" class="col-md-4">Nama</label>
