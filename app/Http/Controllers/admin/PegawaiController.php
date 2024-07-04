@@ -6,6 +6,7 @@ use App\Models\Pegawai;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Divisi;
+use Illuminate\Support\Facades\Auth;
 
 class PegawaiController extends Controller
 {
@@ -19,8 +20,8 @@ class PegawaiController extends Controller
         }else {
             $pegawai = Pegawai::orderBy('nip')->paginate($max_view);
         }
-
-        return view('pegawai.index', compact('pegawai'));
+        $pegawai2 = Auth::user()->pegawai;
+        return view('pegawai.index', compact('pegawai', 'pegawai2'));
     }
 
     public function create()    
@@ -52,6 +53,7 @@ class PegawaiController extends Controller
             'telpon' => $request->input('telpon'),
             'alamat' => $request->input('alamat'),
             'divisi_id' => $request->input('divisi_id'),
+            'user_id' => Auth::id(),
         ];
 
         Pegawai::create($data);
@@ -100,6 +102,7 @@ class PegawaiController extends Controller
             'telpon' => $request->input('telpon'),
             'alamat' => $request->input('alamat'),
             'divisi_id' => $request->input('divisi_id'),
+            'user_id' => Auth::id(),
         ];
 
         $pegawai = Pegawai::findOrFail($id);

@@ -14,7 +14,9 @@ class PengajuanCuti extends Model
     protected $fillable = ['tanggal_awal', 'tanggal_akhir', 'jumlah', 'status', 'ket', 'nip'];
 
     public function pegawai(){
-        return $this->belongsTo(Pegawai::class, 'nip');
+        return $this->belongsTo(Pegawai::class, 'nip', 'nip');
     }
+
+    
 
 }

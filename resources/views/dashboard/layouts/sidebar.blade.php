@@ -72,7 +72,7 @@
                         </a>
                     </li>
                       <li class="nav-item">
-                        <a href="{{ route('users.index') }}" class="nav-link">
+                        <a href="{{ route('user.index') }}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Users</p>
                         </a>
@@ -82,6 +82,12 @@
                         <a href="{{ route('pegawai') }}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('pengajuanCuti.index') }}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Pengajuan Cuti</p>
                         </a>
                     </li>
                     @endif

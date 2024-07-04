@@ -50,7 +50,7 @@
                   onclick="event.preventDefault();
                                               this.closest('form').submit();">
                   <i class="far fa-user"></i>
-                  <span class="badge badge-danger navbar-badge">Logout</span>
+                  Logout
               </a>
           </form>
       </li>

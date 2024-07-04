@@ -23,8 +23,9 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function pengajuanCuti(){
-        return $this->hasMany(PengajuanCuti::class, 'user_id');
+    public function pegawai()
+    {
+    return $this->hasOne(Pegawai::class, 'user_id');
     }
 
     /**
