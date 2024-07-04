@@ -32,7 +32,6 @@
 </head>
 
 <body>
-
   <div class="hero_area">
     <!-- header section strats -->
     <header class="header_section long_section px-0">
@@ -111,7 +110,7 @@
                 </div>
                 <div class="col-md-7">
                   <div class="img-box">
-                    <img src="{{asset('home/images/slider-img.png')}}" alt="">
+                    <img src="{{asset('home/images/b2.jpg')}}" alt="">
                   </div>
                 </div>
               </div>
@@ -141,7 +140,7 @@
                 </div>
                 <div class="col-md-7">
                   <div class="img-box">
-                    <img src="images/slider-img.png" alt="">
+                    <img src="{{asset('home/images/b2.jpg')}}" alt="">
                   </div>
                 </div>
               </div>
@@ -171,7 +170,7 @@
                 </div>
                 <div class="col-md-7">
                   <div class="img-box">
-                    <img src="images/slider-img.png" alt="">
+                    <img src="{{asset('home/images/b2.jpg')}}" alt="">
                   </div>
                 </div>
               </div>
