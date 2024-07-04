@@ -93,11 +93,11 @@
                 <div class="col-md-5">
                   <div class="detail-box">
                     <h1>
-                      For All Your <br>
-                      Furniture Needs
+                      For All Employees <br>
+                      Who Want To Register For Leave
                     </h1>
                     <p>
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores perspiciatis, illo maxime voluptatem a itaque suscipit.
+                       Pengajuan Cuti Pegawai adalah platform yang dirancang untuk mempermudah dan mempercepat pegawai dalam mengajukan cuti secara efisien dan terstruktur. Kami menyediakan sistem yang user-friendly dengan fitur-fitur modern untuk mempermudah proses pengajuan, persetujuan, dan manajemen cuti secara keseluruhan.
                     </p>
                     <div class="btn-box">
                       <a href="" class="btn1">
@@ -122,12 +122,12 @@
               <div class="row">
                 <div class="col-md-5">
                   <div class="detail-box">
-                    <h1>
-                      For All Your <br>
-                      Furniture Needs
+                     <h1>
+                      For All Employees <br>
+                      Who Want To Register For Leave
                     </h1>
                     <p>
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores perspiciatis, illo maxime voluptatem a itaque suscipit.
+                      Pengajuan Cuti Pegawai adalah platform yang dirancang untuk mempermudah dan mempercepat pegawai dalam mengajukan cuti secara efisien dan terstruktur. Kami menyediakan sistem yang user-friendly dengan fitur-fitur modern untuk mempermudah proses pengajuan, persetujuan, dan manajemen cuti secara keseluruhan.
                     </p>
                     <div class="btn-box">
                       <a href="" class="btn1">
@@ -152,12 +152,12 @@
               <div class="row">
                 <div class="col-md-5">
                   <div class="detail-box">
-                    <h1>
-                      For All Your <br>
-                      Furniture Needs
+                      <h1>
+                      For All Employees <br>
+                      Who Want To Register For Leave
                     </h1>
                     <p>
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores perspiciatis, illo maxime voluptatem a itaque suscipit.
+                      Pengajuan Cuti Pegawai adalah platform yang dirancang untuk mempermudah dan mempercepat pegawai dalam mengajukan cuti secara efisien dan terstruktur. Kami menyediakan sistem yang user-friendly dengan fitur-fitur modern untuk mempermudah proses pengajuan, persetujuan, dan manajemen cuti secara keseluruhan.
                     </p>
                     <div class="btn-box">
                       <a href="" class="btn1">
@@ -346,7 +346,7 @@
               </h2>
             </div>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti dolorem eum consequuntur ipsam repellat dolor soluta aliquid laborum, eius odit consectetur vel quasi in quidem, eveniet ab est corporis tempore.
+              Kami berkomitmen untuk memberikan layanan terbaik kepada pengguna kami dengan memastikan bahwa setiap proses terkait cuti pegawai dapat dilakukan dengan transparan dan efektif. Bergabunglah dengan kami untuk mengalami pengalaman pengajuan cuti yang lebih baik dan efisien.
             </p>
             <a href="">
               Read More
