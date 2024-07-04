@@ -581,20 +581,18 @@
         <a href="">
           <i class="fa fa-phone" aria-hidden="true"></i>
           <span>
-            Call : +01 123455678990
+            Call : 021 - 786 3191
           </span>
         </a>
         <a href="">
           <i class="fa fa-envelope" aria-hidden="true"></i>
           <span>
-            Email : demo@gmail.com
+            Email : info@nurulfikri.ac.id
           </span>
         </a>
-        <a href="">
-          <i class="fa fa-map-marker" aria-hidden="true"></i>
-          <span>
-            Location
-          </span>
+        <a href="https://www.google.com/maps/search/stt+nf/@-6.3578491,106.8282384,15z/data=!3m1!4b1?entry=ttu" target="_blank">
+        <i class="fa fa-map-marker" aria-hidden="true"></i>
+        <span>Location</span>
         </a>
       </div>
 
@@ -617,26 +615,8 @@
           <div class="col-sm-6 col-md-4 col-lg-3 mx-auto">
             <div class="info_post">
               <h5>
-                INSTAGRAM FEEDS
               </h5>
-              <div class="post_box">
-                <div class="img-box">
-                  <img src="images/f1.png" alt="">
-                </div>
-                <div class="img-box">
-                  <img src="images/f2.png" alt="">
-                </div>
-                <div class="img-box">
-                  <img src="images/f3.png" alt="">
-                </div>
-                <div class="img-box">
-                  <img src="images/f4.png" alt="">
-                </div>
-                <div class="img-box">
-                  <img src="images/f5.png" alt="">
-                </div>
-                <div class="img-box">
-                  <img src="images/f6.png" alt="">
+              <div
                 </div>
               </div>
             </div>
@@ -653,16 +633,16 @@
                 </button>
               </form>
               <div class="social_box">
-                <a href="">
+                <a href="https://web.facebook.com/STTTerpaduNF/?locale=id_ID&_rdc=1&_rdr">
                   <i class="fa fa-facebook" aria-hidden="true"></i>
                 </a>
-                <a href="">
+                <a href="https://x.com/sttterpadunf1/status/1156387244233519104">
                   <i class="fa fa-twitter" aria-hidden="true"></i>
                 </a>
-                <a href="">
+                <a href="https://www.linkedin.com/in/sttterpadunf/">
                   <i class="fa fa-linkedin" aria-hidden="true"></i>
                 </a>
-                <a href="">
+                <a href="https://www.instagram.com/sttnf_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
                   <i class="fa fa-instagram" aria-hidden="true"></i>
                 </a>
               </div>
@@ -675,7 +655,7 @@
   <!-- end info_section -->
 
 
-  <!-- footer section -->
+<!-- footer section -->
   <footer class="footer_section">
     <div class="container">
       <p>
