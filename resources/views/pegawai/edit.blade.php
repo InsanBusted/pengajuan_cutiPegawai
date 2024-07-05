@@ -53,6 +53,10 @@
                                         <label for="exampleFormControlInput1">NIP</label>
                                         <input type="text" name="nip" class="form-control" id="exampleFormControlInput1" placeholder="Nomor Induk Pekerja" required value="{{ old('nip', $pegawai->nip) }}">
                                     </div>
+                                    <div class="form-group" hidden>
+                                        <label for="exampleFormControlInput1">User Id</label>
+                                        <input type="text" name="user_id" class="form-control" id="exampleFormControlInput1" placeholder="Nomor Induk Pekerja" required value="{{ old('user_id', $pegawai->user_id) }}">
+                                    </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlInput1">Gender</label>
                                         <div>

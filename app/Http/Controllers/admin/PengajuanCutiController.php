@@ -22,9 +22,10 @@ class PengajuanCutiController extends Controller
             $pengajuanCuti = PengajuanCuti::orderBy('nip')->paginate($max_view);
         }
 
+        
+
         $pegawai = Auth::user()->pegawai;
         $pengajuanCuti1 = $pegawai->pengajuanCuti;
-
 
         return view('pegawai.pengajuanCuti.index', compact('pengajuanCuti', 'pengajuanCuti1'));
     }
@@ -49,7 +50,6 @@ class PengajuanCutiController extends Controller
             ]);
 
         
-        $pegawai = Auth::user()->pegawai;   
         
         $data = [
             'tanggal_awal' => $request->input('tanggal_awal'),
@@ -57,7 +57,7 @@ class PengajuanCutiController extends Controller
             'jumlah' => $request->input('jumlah'),
             'ket' => $request->input('ket'),
             'status' => $request->input('status'),
-            'nip' => $pegawai->nip,
+            'nip' => Auth::user()->pegawai->id,
         ];
 
         PengajuanCuti::create($data);
@@ -97,7 +97,6 @@ class PengajuanCutiController extends Controller
             ]);
 
         
-        $pegawai = Auth::user()->pegawai;   
         
         $data = [
             'tanggal_awal' => $request->input('tanggal_awal'),
@@ -105,7 +104,7 @@ class PengajuanCutiController extends Controller
             'jumlah' => $request->input('jumlah'),
             'ket' => $request->input('ket'),
             'status' => $request->input('status'),
-            'nip' => $pegawai->nip,
+            'nip' => $request->input('nip'),
         ];
 
 

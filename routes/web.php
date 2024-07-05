@@ -34,24 +34,8 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
         Route::put('/users/{id}', [ADMIN\UsersController::class, "update"])->name('user.update');
         Route::get('/users/edit/{id}', [ADMIN\UsersController::class, "edit"])->name('user.edit');
 
-        
-    });
-
-    // Pegawai
-    Route::prefix('/pegawai')->group(function() {
-
-       
-
-       
-
-    // Pengajuan Cuti
-        Route::get('/PengajuanCuti/create', [ADMIN\PengajuanCutiController::class, "create"])->name('pengajuanCuti.create');
-        Route::post('/PengajuanCuti/store', [ADMIN\PengajuanCutiController::class, "store"])->name('pengajuanCuti.store');
-        Route::delete('/PengajuanCuti/delete/{id}', [ADMIN\PengajuanCutiController::class, "destroy"])->name('pengajuanCuti.delete');
-        Route::put('/PengajuanCuti/{id}', [ADMIN\PengajuanCutiController::class, "update"])->name('pengajuanCuti.update');
-        Route::get('/PengajuanCuti/edit/{id}', [ADMIN\PengajuanCutiController::class, "edit"])->name('pengajuanCuti.edit');
-
-    // Jatah Cuti
+        // Jatah Cuti
+        Route::get('/JatahCuti', [ADMIN\JatahCutiController::class, 'index'])->name('jatahCuti.index');
         Route::get('/JatahCuti/create', [ADMIN\JatahCutiController::class, "create"])->name('jatahCuti.create');
         Route::post('/JatahCuti/store', [ADMIN\JatahCutiController::class, "store"])->name('jatahCuti.store');
         Route::delete('/JatahCuti/delete/{id}', [ADMIN\JatahCutiController::class, "destroy"])->name('jatahCuti.delete');
@@ -73,13 +57,15 @@ Route::middleware(['auth', 'verified', 'role:pegawai|admin'])->group(function() 
 
     // Pengajuan Cuti
     Route::get('/pegawai/PengajuanCuti', [ADMIN\PengajuanCutiController::class, 'index'])->name('pengajuanCuti.index');
-    Route::get('/PengajuanCuti/create', [ADMIN\PengajuanCutiController::class, "create"])->name('pengajuanCuti.create');
-    Route::post('/PengajuanCuti/store', [ADMIN\PengajuanCutiController::class, "store"])->name('pengajuanCuti.store');
-    Route::delete('/PengajuanCuti/delete/{id}', [ADMIN\PengajuanCutiController::class, "destroy"])->name('pengajuanCuti.delete');
-    Route::put('/PengajuanCuti/{id}', [ADMIN\PengajuanCutiController::class, "update"])->name('pengajuanCuti.update');
-    Route::get('/PengajuanCuti/edit/{id}', [ADMIN\PengajuanCutiController::class, "edit"])->name('pengajuanCuti.edit');
+    Route::get('/pegawai/PengajuanCuti/create', [ADMIN\PengajuanCutiController::class, "create"])->name('pengajuanCuti.create');
+    Route::post('/pegawai/PengajuanCuti/store', [ADMIN\PengajuanCutiController::class, "store"])->name('pengajuanCuti.store');
+    Route::delete('/pegawai/PengajuanCuti/delete/{id}', [ADMIN\PengajuanCutiController::class, "destroy"])->name('pengajuanCuti.delete');
+    Route::put('/pegawai/PengajuanCuti/{id}', [ADMIN\PengajuanCutiController::class, "update"])->name('pengajuanCuti.update');
+    Route::get('/pegawai/PengajuanCuti/edit/{id}', [ADMIN\PengajuanCutiController::class, "edit"])->name('pengajuanCuti.edit');
     
-    Route::get('/pegawai/JatahCuti', [ADMIN\JatahCutiController::class, 'index'])->name('jatahCuti.index');
+     // Jatah Cuti
+
+
 
 
 

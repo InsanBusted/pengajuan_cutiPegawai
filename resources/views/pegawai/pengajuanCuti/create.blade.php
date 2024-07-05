@@ -63,10 +63,17 @@
                                         <label for="ket" class="col-md-4">Keterangan</label>
                                         <input type="text" name="ket" value="{{ old('ket') }}" id="ket" class="form-control col-md-8">
                                     </div>
+                                    @if (auth()->user()->hasRole('admin'))
                                     <div class="form-group row">
                                         <label for="status" class="col-md-4">Status</label>
                                         <input type="text" name="status" value="{{ old('status') }}" id="status" class="form-control col-md-8">
                                     </div>
+                                    @endif
+                                    @if (auth()->user()->hasRole('pegawai'))
+                                    <div class="form-group row">
+                                        <input type="text" name="status" value="default" id="status" class="form-control col-md-8" readonly hidden>
+                                    </div>
+                                    @endif
                                     {{-- <div class="form-group row">
                                         <label for="nip" class="col-md-4">NIP</label>
                                         <select class="form-control select-dropdown col-md-8" name="nip">

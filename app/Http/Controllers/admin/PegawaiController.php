@@ -102,7 +102,7 @@ class PegawaiController extends Controller
             'telpon' => $request->input('telpon'),
             'alamat' => $request->input('alamat'),
             'divisi_id' => $request->input('divisi_id'),
-            'user_id' => Auth::id(),
+            'user_id' => $request->input('user_id'),
         ];
 
         $pegawai = Pegawai::findOrFail($id);
