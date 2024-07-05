@@ -3,14 +3,24 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin as ADMIN;
+use App\Http\Controllers\user as USER;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', [USER\UserRoute::class, "index"])->name('welcome');
+Route::get('/form-pengajuan-cuti', [USER\UserRoute::class, "formCuti"])->name('formCuti');
+Route::get('/about', [USER\UserRoute::class, "about"])->name('about');
+Route::get('/contact', [USER\UserRoute::class, "contact"])->name('contact');
+Route::get('/blog', [USER\UserRoute::class, "blog"])->name('blog');
+
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
+
+
 
 Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
