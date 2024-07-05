@@ -20,10 +20,10 @@ class Pegawai extends Model
     }
 
     public function pengajuanCuti(){
-        return $this->hasMany(PengajuanCuti::class);
+        return $this->hasMany(PengajuanCuti::class, 'nip');
     }
     public function jatahCuti(){
-        return $this->hasOne(jatahCuti::class);
+        return $this->hasMany(jatahCuti::class, 'nip');
     }
 
     public function user()

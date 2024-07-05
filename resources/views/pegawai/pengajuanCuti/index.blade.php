@@ -52,23 +52,25 @@
                                     </thead>
                                     <tbody>
                                         @if (auth()->user()->hasRole('pegawai'))
-                                            @if ($pengajuanCuti1)
-                                            <tr>
-                                                <td>1</td>
-                                                <td>{{ $pengajuanCuti1->tanggal_awal }}</td>
-                                                <td>{{ $pengajuanCuti1->tanggal_akhir }}</td>
-                                                <td>{{ $pengajuanCuti1->jumlah }}</td>
-                                                <td>{{ $pengajuanCuti1->ket }}</td>
-                                                <td>{{ $pengajuanCuti1->status }}</td>
-                                                <td>{{ $pengajuanCuti1->pegawai->nip }}</td>
-                                                <td class="d-flex"><a type="button" href="{{ route('pengajuanCuti.edit', $pengajuanCuti1->id) }}" class="btn btn-primary mr-4">Edit</a>
-                                                    <form action="{{ route('pengajuanCuti.delete', $pengajuanCuti1->id) }}" method="post" onsubmit="return confirm('yakin ingin dihapus?')">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                                    </form>
-                                                </td>
-                                            </tr>
+                                            @if ($pengajuanCuti1->count() > 0)
+                                                @foreach ($pengajuanCuti1 as $pengajuan)
+                                                <tr>
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td>{{ $pengajuan->tanggal_awal }}</td>
+                                                    <td>{{ $pengajuan->tanggal_akhir }}</td>
+                                                    <td>{{ $pengajuan->jumlah }}</td>
+                                                    <td>{{ $pengajuan->ket }}</td>
+                                                    <td>{{ $pengajuan->status }}</td>
+                                                    <td>{{ $pengajuan->pegawai->nip }}</td>
+                                                    <td class="d-flex"><a type="button" href="{{ route('pengajuanCuti.edit', $pengajuan->id) }}" class="btn btn-primary mr-4">Edit</a>
+                                                        <form action="{{ route('pengajuanCuti.delete', $pengajuan->id) }}" method="post" onsubmit="return confirm('yakin ingin dihapus?')">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                             @endif
                                         @elseif (auth()->user()->hasRole('admin'))
                                             @foreach ($pengajuanCuti as $pengajuan)
@@ -104,7 +106,9 @@
                                         </tr>
                                     </tfoot>
                                 </table>
+                                @if (auth()->user()->hasRole('admin'))
                                 {{ $pengajuanCuti->onEachSide(3)->links() }}
+                                @endif
                             </div>
                             <!-- /.card-body -->
                         </div>

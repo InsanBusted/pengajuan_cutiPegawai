@@ -66,11 +66,19 @@
                                         <label for="exampleFormControlInput1">Keterangan</label>
                                         <input type="text" name="ket" class="form-control" id="exampleFormControlInput1" placeholder="ket" required value="{{ old('ket', $pengajuanCuti->ket) }}">
                                     </div>
+                                    @if (Auth::user()->hasRole('admin'))
                                     <div class="form-group">
                                         <label for="exampleFormControlInput1">Status</label>
                                         <input type="text" name="status" class="form-control" id="exampleFormControlInput1" placeholder="status" required value="{{ old('status', $pengajuanCuti->status) }}">
                                     </div>
-                                    <div class="form-group">
+                                    @endif
+                                    @if (Auth::user()->hasRole('pegawai'))
+                                    <div class="form-group" hidden>
+                                        <label for="exampleFormControlInput1">Status</label>
+                                        <input type="text" name="status" class="form-control" id="exampleFormControlInput1" placeholder="status" required value="{{ old('status', $pengajuanCuti->status) }}" >
+                                    </div>
+                                    @endif
+                                    <div class="form-group" hidden>
                                         <label for="nip" >NIP</label>
                                         <select class="form-control select-dropdown" name="nip">
                                             @foreach ($pegawai as $pegawai)
@@ -80,7 +88,7 @@
                                           </select>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Update</button>
-                                    <a type="button" href="{{ url('/pegawai') }}" class="btn btn-info">Kembali</a>
+                                    <a type="button" href="{{ url('/pegawai/PengajuanCuti') }}" class="btn btn-info">Kembali</a>
                                 </form>
                             </div>
                             <!-- /.card-body -->
