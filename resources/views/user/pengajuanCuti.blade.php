@@ -24,7 +24,7 @@
                             </ul>
                         </div>
                         @endif
-                        <form action="{{ route('pengajuanCuti.store') }}" method="post">
+                        <form action="{{ route('pengajuanCuti.store2') }}" method="post">
                             @csrf
                             <div class="form-group">
                                 <label for="tanggal_awal">Tanggal Awal</label>
@@ -38,6 +38,11 @@
                                 <label for="jumlah">Jumlah Hari</label>
                                 <input type="number" name="jumlah" class="form-control" id="jumlah" placeholder="Jumlah Hari" required value="{{ old('jumlah') }}">
                             </div>
+                            @if (auth()->user()->hasRole('pegawai'))
+                                    <div class="form-group row">
+                                        <input type="text" name="status" value="default" id="status" class="form-control col-md-8" readonly hidden>
+                                    </div>
+                            @endif
                             <div class="form-group">
                                 <label for="ket">Keterangan</label>
                                 <textarea name="ket" class="form-control" id="ket" placeholder="Keterangan">{{ old('ket') }}</textarea>

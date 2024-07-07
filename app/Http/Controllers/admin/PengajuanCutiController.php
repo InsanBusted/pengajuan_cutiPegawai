@@ -68,6 +68,32 @@ class PengajuanCutiController extends Controller
         return redirect()->route('pengajuanCuti.create')->with('success', 'berhasil simpan data');
 
     }
+    // add data for landing page
+    public function store2(Request $request)
+    {
+        $request->validate([
+            'tanggal_awal' => 'required',
+            'tanggal_akhir' => 'required',
+            'jumlah' => 'required',
+            'ket' => 'required',
+            'status' => 'required',
+            ]);
+
+        
+        
+        $data = [
+            'tanggal_awal' => $request->input('tanggal_awal'),
+            'tanggal_akhir' => $request->input('tanggal_akhir'),
+            'jumlah' => $request->input('jumlah'),
+            'ket' => $request->input('ket'),
+            'status' => $request->input('status'),
+            'nip' => Auth::user()->pegawai->id,
+        ];
+
+        PengajuanCuti::create($data);
+        return redirect()->route('formCuti')->with('success', 'berhasil simpan data');
+
+    }
 
     /**
      * Display the specified resource.

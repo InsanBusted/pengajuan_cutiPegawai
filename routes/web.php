@@ -5,12 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin as ADMIN;
 use App\Http\Controllers\user as USER;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/', [USER\UserRoute::class, "index"])->name('welcome');
-Route::get('/form-pengajuan-cuti', [USER\UserRoute::class, "formCuti"])->name('formCuti');
+Route::get('/', [USER\UserRoute::class, "index"])->name('home');
+Route::get('/form-pengajuan-cuti', [USER\UserRoute::class, "formCuti"])->middleware(['auth', 'verified', 'role:pegawai'])->name('formCuti');
 Route::get('/about', [USER\UserRoute::class, "about"])->name('about');
 Route::get('/contact', [USER\UserRoute::class, "contact"])->name('contact');
 Route::get('/blog', [USER\UserRoute::class, "blog"])->name('blog');
@@ -69,9 +66,14 @@ Route::middleware(['auth', 'verified', 'role:pegawai|admin'])->group(function() 
     Route::get('/pegawai/PengajuanCuti', [ADMIN\PengajuanCutiController::class, 'index'])->name('pengajuanCuti.index');
     Route::get('/pegawai/PengajuanCuti/create', [ADMIN\PengajuanCutiController::class, "create"])->name('pengajuanCuti.create');
     Route::post('/pegawai/PengajuanCuti/store', [ADMIN\PengajuanCutiController::class, "store"])->name('pengajuanCuti.store');
+    Route::post('/pegawai/PengajuanCuti/store', [ADMIN\PengajuanCutiController::class, "store2"])->name('pengajuanCuti.store2');
     Route::delete('/pegawai/PengajuanCuti/delete/{id}', [ADMIN\PengajuanCutiController::class, "destroy"])->name('pengajuanCuti.delete');
     Route::put('/pegawai/PengajuanCuti/{id}', [ADMIN\PengajuanCutiController::class, "update"])->name('pengajuanCuti.update')->middleware('pengajuanCuti');
     Route::get('/pegawai/PengajuanCuti/edit/{id}', [ADMIN\PengajuanCutiController::class, "edit"])->name('pengajuanCuti.edit')->middleware('pengajuanCuti');
+
+    
+
+
 
 });
 
