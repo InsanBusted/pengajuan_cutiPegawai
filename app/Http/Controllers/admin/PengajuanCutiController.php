@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 class PengajuanCutiController extends Controller
 {
     public function index(){
+
+
         // fitur pagination
         $max_view = 3;
 
@@ -25,9 +27,11 @@ class PengajuanCutiController extends Controller
         
 
         $pegawai = Auth::user()->pegawai;
-        $pengajuanCuti1 = $pegawai->pengajuanCuti;
+        $pengajuanCuti1 = $pegawai ? $pegawai->pengajuanCuti : collect([]);
 
-        return view('pegawai.pengajuanCuti.index', compact('pengajuanCuti', 'pengajuanCuti1'));
+        $kosongPegawai = !$pegawai;
+
+        return view('pegawai.pengajuanCuti.index', compact('pengajuanCuti', 'pengajuanCuti1', 'kosongPegawai'));
     }
 
     public function create()    

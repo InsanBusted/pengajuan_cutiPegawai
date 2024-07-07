@@ -37,6 +37,11 @@
                                     {{ session('success') }}
                                 </div>
                                 @endif
+                                @if ($kosongPegawai)
+                                                <div class="alert alert-danger mt-3" role="alert">
+                                                    Tambahkan Data Pegawai Terlebih Dahulu
+                                                </div>
+                                            @endif
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
@@ -70,7 +75,7 @@
                                                         </form>
                                                     </td>
                                                 </tr>
-                                            @endforeach
+                                               @endforeach
                                             @endif
                                         @elseif (auth()->user()->hasRole('admin'))
                                             @foreach ($pengajuanCuti as $pengajuan)
