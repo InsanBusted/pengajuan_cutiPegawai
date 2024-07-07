@@ -475,9 +475,10 @@
                                             </h6>
                                         </div>
                                         <p>
-                                            "Sistem pengajuan cuti pegawai ini sangat mudah digunakan dan efisien
-                                            Antarmukanya bersih dan langkah-langkah untuk mengajukan cuti sangat mudah dipahami,
-                                            Ini merupakan peningkatan besar dari proses manual sebelumnya."
+                                            "Mengajukan cuti belum pernah semudah ini
+                                            Sistem web ini cepat, responsif, dan sangat mudah digunakan.
+                                            Saya menghargai transparansi yang diberikan,
+                                            memungkinkan saya melihat status permintaan cuti saya secara real-time."
                                         </p>
                                     </div>
                                 </div>
@@ -499,9 +500,12 @@
                                             </h6>
                                         </div>
                                         <p>
-                                            "Sistem pengajuan cuti pegawai ini sangat mudah digunakan dan efisien
-                                            Antarmukanya bersih dan langkah-langkah untuk mengajukan cuti sangat mudah dipahami,
-                                            Ini merupakan peningkatan besar dari proses manual sebelumnya."
+                                            "Mengelola permintaan cuti dulu merupakan tugas yang merepotkan,
+                                            tetapi sistem ini membuatnya sangat mudah
+                                            Dashboardnya memberikan gambaran jelas tentang semua permintaan yang
+                                            tertunda dan disetujui,
+                                            dan notifikasi otomatis memastikan tidak ada yang terlewat.
+                                            Alat yang wajib dimiliki untuk setiap departemen HR."
                                         </p>
                                     </div>
                                 </div>
@@ -524,7 +528,8 @@
                                         </div>
                                         <p>
                                             "Sistem pengajuan cuti pegawai ini sangat mudah digunakan dan efisien
-                                            Antarmukanya bersih dan langkah-langkah untuk mengajukan cuti sangat mudah dipahami,
+                                            Antarmukanya bersih dan langkah-langkah untuk mengajukan cuti sangat mudah
+                                            dipahami,
                                             Ini merupakan peningkatan besar dari proses manual sebelumnya."
                                         </p>
                                     </div>
