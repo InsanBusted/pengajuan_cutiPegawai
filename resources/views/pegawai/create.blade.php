@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Tanggal Lahir</label>
-                                    <input type="date" name="tgl_lahir" class="form-control" id="exampleFormControlInput1" placeholder="alamat Member" required value="{{ old('tgl_lahir') }}">
+                                    <input type="date" name="tgl_lahir" class="form-control" id="exampleFormControlInput1" placeholder="alamat" required value="{{ old('tgl_lahir') }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">No Telepon</label>

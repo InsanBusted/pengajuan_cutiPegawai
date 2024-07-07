@@ -12,9 +12,12 @@ class PengajuanCuti extends Model
 
     protected $table = 'pengajuan_cuti';
     protected $fillable = ['tanggal_awal', 'tanggal_akhir', 'jumlah', 'status', 'ket', 'nip'];
+    protected $with = ['pegawai'];
 
     public function pegawai(){
-        return $this->belongsTo(Pegawai::class, 'nip');
+        return $this->belongsTo(Pegawai::class, 'nip',);
     }
+
+    
 
 }

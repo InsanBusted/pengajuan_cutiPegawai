@@ -22,12 +22,17 @@ class PengajuanCutiController extends Controller
             $pengajuanCuti = PengajuanCuti::orderBy('nip')->paginate($max_view);
         }
 
-        return view('pegawai.pengajuanCuti.index', compact('pengajuanCuti'));
+        
+
+        $pegawai = Auth::user()->pegawai;
+        $pengajuanCuti1 = $pegawai->pengajuanCuti;
+
+        return view('pegawai.pengajuanCuti.index', compact('pengajuanCuti', 'pengajuanCuti1'));
     }
 
     public function create()    
         {
-            $pegawai = Pegawai::all();
+            $pegawai = Auth::user()->pegawai;
             return view('pegawai.pengajuanCuti.create', compact('pegawai'));
         }
 
@@ -42,16 +47,17 @@ class PengajuanCutiController extends Controller
             'jumlah' => 'required',
             'ket' => 'required',
             'status' => 'required',
-            'nip' => 'required',
             ]);
 
+        
+        
         $data = [
             'tanggal_awal' => $request->input('tanggal_awal'),
             'tanggal_akhir' => $request->input('tanggal_akhir'),
             'jumlah' => $request->input('jumlah'),
             'ket' => $request->input('ket'),
             'status' => $request->input('status'),
-            'nip' => $request->input('nip'),
+            'nip' => Auth::user()->pegawai->id,
         ];
 
         PengajuanCuti::create($data);
@@ -88,9 +94,10 @@ class PengajuanCutiController extends Controller
             'jumlah' => 'required',
             'ket' => 'required',
             'status' => 'required',
-            'nip' => 'required',
             ]);
 
+        
+        
         $data = [
             'tanggal_awal' => $request->input('tanggal_awal'),
             'tanggal_akhir' => $request->input('tanggal_akhir'),
@@ -99,6 +106,7 @@ class PengajuanCutiController extends Controller
             'status' => $request->input('status'),
             'nip' => $request->input('nip'),
         ];
+
 
         $pengajuanCuti = PengajuanCuti::findOrFail($id);
         $pengajuanCuti->update($data);

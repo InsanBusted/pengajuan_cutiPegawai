@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('alamat', length:100);
             $table->unsignedBigInteger('divisi_id');
             $table->foreign('divisi_id')->references('id')->on('divisi');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

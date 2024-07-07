@@ -52,7 +52,28 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($pegawai as $pegawai1)
+                                        @if (auth()->user()->hasRole('pegawai'))
+                                            @if ($pegawai2)
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>{{ $pegawai2->nip }}</td>
+                                                    <td>{{ $pegawai2->gender == 'L' ? 'Laki-Laki' : 'Perempuan' }}</td>
+                                                    <td>{{ $pegawai2->tmp_lahir }}</td>
+                                                    <td>{{ $pegawai2->tgl_lahir }}</td>
+                                                    <td>{{ $pegawai2->telpon }}</td>
+                                                    <td>{{ $pegawai2->alamat }}</td>
+                                                    <td>{{ $pegawai2->divisi->nama }}</td>
+                                                    <td class="d-flex"><a type="button" href="{{ route('pegawai.edit', $pegawai2->id) }}" class="btn btn-primary mr-4">Edit</a>
+                                                        <form action="{{ route('pegawai.delete', $pegawai2->id) }}" method="post" onsubmit="return confirm('yakin ingin dihapus?')">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endif
+                                        @elseif (auth()->user()->hasRole('admin'))
+                                            @foreach ($pegawai as $pegawai1)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $pegawai1->nip }}</td>
@@ -64,13 +85,14 @@
                                                 <td>{{ $pegawai1->divisi->nama }}</td>
                                                 <td class="d-flex"><a type="button" href="{{ route('pegawai.edit', $pegawai1->id) }}" class="btn btn-primary mr-4">Edit</a>
                                                     <form action="{{ route('pegawai.delete', $pegawai1->id) }}" method="post" onsubmit="return confirm('yakin ingin dihapus?')">
-                                                       @csrf
-                                                       @method('delete')
-                                                       <button type="submit" class="btn btn-danger">Delete</button>
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
                                                     </form>
-                                                 </td>
+                                                </td>
                                             </tr>
-                                        @endforeach
+                                            @endforeach
+                                        @endif
                                     </tbody>
                                     <tfoot>
                                         <tr>

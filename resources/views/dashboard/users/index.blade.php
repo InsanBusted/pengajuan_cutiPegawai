@@ -31,7 +31,7 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm">Tambah</a>
+                                <a href="{{ route('user.create') }}" class="btn btn-primary btn-sm">Tambah</a>
                                 @if (session('success'))
                                 <div class="alert alert-success">
                                     {{ session('success') }}
@@ -52,8 +52,8 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->email }}</td>
-                                                <td class="d-flex"><a type="button" href="{{ route('users.edit', $user->id) }}" class="btn btn-primary mr-4">Edit</a>
-                                                    <form action="{{ route('users.delete', $user->id) }}" method="post" onsubmit="return confirm('yakin ingin dihapus?')">
+                                                <td class="d-flex"><a type="button" href="{{ route('user.edit', $user->id) }}" class="btn btn-primary mr-4">Edit</a>
+                                                    <form action="{{ route('user.delete', $user->id) }}" method="post" onsubmit="return confirm('yakin ingin dihapus?')">
                                                        @csrf
                                                        @method('delete')
                                                        <button type="submit" class="btn btn-danger">Delete</button>
