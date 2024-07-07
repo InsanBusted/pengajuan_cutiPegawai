@@ -70,14 +70,8 @@ Route::middleware(['auth', 'verified', 'role:pegawai|admin'])->group(function() 
     Route::get('/pegawai/PengajuanCuti/create', [ADMIN\PengajuanCutiController::class, "create"])->name('pengajuanCuti.create');
     Route::post('/pegawai/PengajuanCuti/store', [ADMIN\PengajuanCutiController::class, "store"])->name('pengajuanCuti.store');
     Route::delete('/pegawai/PengajuanCuti/delete/{id}', [ADMIN\PengajuanCutiController::class, "destroy"])->name('pengajuanCuti.delete');
-    Route::put('/pegawai/PengajuanCuti/{id}', [ADMIN\PengajuanCutiController::class, "update"])->name('pengajuanCuti.update');
-    Route::get('/pegawai/PengajuanCuti/edit/{id}', [ADMIN\PengajuanCutiController::class, "edit"])->name('pengajuanCuti.edit');
-    
-     // Jatah Cuti
-
-
-
-
+    Route::put('/pegawai/PengajuanCuti/{id}', [ADMIN\PengajuanCutiController::class, "update"])->name('pengajuanCuti.update')->middleware('pengajuanCuti');
+    Route::get('/pegawai/PengajuanCuti/edit/{id}', [ADMIN\PengajuanCutiController::class, "edit"])->name('pengajuanCuti.edit')->middleware('pengajuanCuti');
 
 });
 

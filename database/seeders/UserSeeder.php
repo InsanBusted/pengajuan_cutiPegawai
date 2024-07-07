@@ -13,12 +13,12 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $admin = User::create([
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('12345678')
-        ]);
-        $admin->assignRole('admin');
+        // $admin = User::create([
+        //     'name' => 'admin',
+        //     'email' => 'admin@gmail.com',
+        //     'password' => bcrypt('12345678')
+        // ]);
+        // $admin->assignRole('admin');
 
         // $pegawai = User::create([
         //     'name' => 'pegawai',
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
         // ]);
         // $pegawai->assignRole('pegawai');
 
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 6; $i <= 10; $i++) {
             $pegawai = User::create([
                 'name' => 'pegawai' . $i,
                 'email' => 'pegawai' . $i . '@gmail.com',
