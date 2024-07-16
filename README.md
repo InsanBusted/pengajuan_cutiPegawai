@@ -1,7 +1,7 @@
 <h1>USER ADMIN</h1>
 <ul>user : admin@gmail.com</ul>
 <ul>pass : 12345678</ul>
-
+</hr>
 <h1>USER Pegawai</h1>
 <ul>user : pegawai1@gmail.com</ul>
 <ul>pass : 12345678</ul>
